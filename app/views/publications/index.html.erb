@@ -6,6 +6,33 @@
       <div class='shortPublication'><%= publication.content %></div>
       <br>
       <%= link_to 'Read More', "/publications/#{publication.id}" %>
+      <% if session[:user_role] == 'user' %>
+        <% if publication.status == 'draft' %>
+          <%= form_tag "/publications/#{publication.id}", {:method => :delete } do  %>
+            <div class="actions">
+              <%=submit_tag "Delete" %>
+            </div>
+          <% end %>
+          <%= form_tag "/publications/#{publication.id}/approval", {:method => :post } do  %>
+            <div class="actions">
+              <%=submit_tag "Push to approval" %>
+            </div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <% if publication.status == 'review' %>
+          <%= form_tag "/publications/#{publication.id}/acception", {:method => :post } do  %>
+            <div class="actions">
+              <%=submit_tag "Accept" %>
+            </div>
+          <% end %>
+          <%= form_tag "/publications/#{publication.id}/denial", {:method => :post } do  %>
+            <div class="actions">
+              <%=submit_tag "Deny" %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
 <% end %>
 <% if @publications.size == 0 %>

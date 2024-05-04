@@ -11,5 +11,9 @@ Rails.application.routes.draw do
     get :logout
     get :form
   end
-  resources :publications, only: %i[new index create show]
+  resources :publications, only: %i[new index create show destroy] do
+    post :approval
+    post :acception
+    post :denial
+  end
 end

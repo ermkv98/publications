@@ -28,6 +28,34 @@ class PublicationsController < ApplicationController
     redirect_to "/publications/#{publication.id}", alert: 'Publication created'
   end
 
+  def destroy
+    publication = Publication.find(params[:id])
+    publication.destroy
+
+    redirect_to '/publications'
+  end
+
+  def approval
+    publication = Publication.find(params[:publication_id])
+    publication.update(status: :review)
+
+    redirect_to '/publications'
+  end
+
+  def acception
+    publication = Publication.find(params[:publication_id])
+    publication.update(status: :accepted)
+
+    redirect_to '/publications'
+  end
+
+  def denial
+    publication = Publication.find(params[:publication_id])
+    publication.update(status: :denied)
+
+    redirect_to '/publications'
+  end
+
   private
 
   def publication_params
