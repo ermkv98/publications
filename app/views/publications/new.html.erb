@@ -5,7 +5,7 @@
     </div>
 <% end %>
 
-<%= form_tag '/publications', {:method => :post } do  %>
+<%= form_tag '/publications', {:method => :post, :enctype =>"multipart/form-data" }  do  %>
 <div class="field">
     <%= label_tag :title, 'Title' %>
     <%= text_field_tag :title, params[:title] %>
@@ -20,6 +20,10 @@
       <%= select_tag(:region, options_for_select(::Regions::CODES.to_a, 0)) %>
   </div>
 <% end %>
+<div class="field">
+    <%= label_tag :files, 'Files' %>
+    <%= file_field_tag "files[]", multiple: true %>    
+</div>
 <div class="actions">
     <%=submit_tag "Save" %>
 </div>

@@ -9,5 +9,8 @@
   <%# <%= image_tag publication.img %>
   <h1><%= @publication.title %></h1>
   <p><%= @publication.content %></p>
+  <% @publication.files.each do |file| %>
+    <a href='<%= file.url %>'><%=file.blob.filename%><a>
+  <% end %>
   <br>
 </div>

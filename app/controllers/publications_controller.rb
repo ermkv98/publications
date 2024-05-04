@@ -31,7 +31,7 @@ class PublicationsController < ApplicationController
   private
 
   def publication_params
-    params.permit(:title, :region, content: {})
+    params.permit(:title, :region, content: {}, files: [])
   end
 
   def current_user

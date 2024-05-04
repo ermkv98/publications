@@ -3,6 +3,7 @@
 class Publication < ApplicationRecord
   belongs_to :author, class_name: 'User'
 
+  has_many_attached :files
   has_rich_text :content
 
   enum :status, {
