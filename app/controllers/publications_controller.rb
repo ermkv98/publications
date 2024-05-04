@@ -4,7 +4,7 @@ class PublicationsController < ApplicationController
   before_action :authorize_request!
 
   def index
-    @publications = Publication.all
+    @publications = policy_scope(Publication)
   end
 
   def show
