@@ -1,0 +1,13 @@
+<h1>Publication</h1>
+<% if flash[:alert] %>
+    <div id="error_explanation">
+        <p id="notice"><%= flash[:alert] %></p>
+    </div>
+<% end %>
+
+<div class="publication">
+  <%# <%= image_tag publication.img %>
+  <h1><%= @publication.title %></h1>
+  <p><%= @publication.content %></p>
+  <br>
+</div>

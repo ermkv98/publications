@@ -1,0 +1,40 @@
+<h1>User Form</h1>
+<% if flash[:alert] %>
+    <div id="error_explanation">
+        <p id="notice"><%= flash[:alert] %></p>
+    </div>
+<% end %>
+
+<%= form_tag '/users', {:method => :post } do  %>
+<div class="field">
+    <%= label_tag :first_name, 'First Name' %>
+    <%= text_field_tag :first_name, params[:first_name] %>
+</div>
+<div class="field">
+    <%= label_tag :second_name, 'Second Name' %>
+    <%= text_field_tag :second_name, params[:second_name] %>
+</div>
+<div class="field">
+    <%= label_tag :third_name, 'Third Name' %>
+    <%= text_field_tag :third_name, params[:third_name] %>
+</div>
+<div class="field">
+    <%= label_tag :role, 'Role' %>
+    <%= select_tag(:role, options_for_select([['User', 'user'], ['Admin', 'admin']], 0)) %>
+</div>
+<div class="field">
+    <%= label_tag :region, 'Region' %>
+    <%= select_tag(:region, options_for_select(::Regions::CODES.to_a, 0)) %>
+</div>
+<div class="field">
+    <%= label_tag :login, 'Login' %>
+    <%= text_field_tag :login, params[:login] %>
+</div>
+<div class="field">
+    <%= label_tag :password, 'Password' %>
+    <%= password_field_tag :password, params[:password] %>
+</div>
+<div class="actions">
+    <%=submit_tag "Save" %>
+</div>
+<% end %>

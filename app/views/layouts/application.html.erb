@@ -11,6 +11,17 @@
   </head>
 
   <body>
+    <div class='header'>
+      <% if session[:user_name] %>
+        <%= link_to 'View Publications', '/' %>
+        <%= link_to 'Create Publication', '/publications/new' %>
+        <%= link_to 'Create User', '/users/form' if session[:user_role] == 'admin' %>
+        <div class='userName'><%= session[:user_name] %> (<%= session[:user_role]%>)</div>
+        <%= link_to 'Logout', '/users/logout' %>
+      <% elsif %>
+        <%= link_to 'Login', '/users/login' %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

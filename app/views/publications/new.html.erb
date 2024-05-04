@@ -1,0 +1,26 @@
+<h1>Publication Form</h1>
+<% if flash[:alert] %>
+    <div id="error_explanation">
+        <p id="notice"><%= flash[:alert] %></p>
+    </div>
+<% end %>
+
+<%= form_tag '/publications', {:method => :post } do  %>
+<div class="field">
+    <%= label_tag :title, 'Title' %>
+    <%= text_field_tag :title, params[:title] %>
+</div>
+<div class="field">
+    <%= label_tag :content, 'Content' %>
+    <%= text_area(:content, rows: 15, data: {provide: "markdown"}) %>
+</div>
+<% if session[:user_role] == 'admin' %>
+  <div class="field">
+      <%= label_tag :region, 'Region' %>
+      <%= select_tag(:region, options_for_select(::Regions::CODES.to_a, 0)) %>
+  </div>
+<% end %>
+<div class="actions">
+    <%=submit_tag "Save" %>
+</div>
+<% end %>

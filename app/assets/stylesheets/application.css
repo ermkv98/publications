@@ -13,3 +13,38 @@
  *= require_tree .
  *= require_self
  */
+
+ .header {
+  display: flex;
+  margin: 5px;
+  font-size: 25px;
+  padding-bottom: 10px;
+  border-bottom: solid;
+
+  a {
+    margin-right: 15px;
+  }
+ }
+
+ .userName {
+  margin-right: 15px;
+ }
+
+ .publication {
+  border: solid;
+  border-width: 2px;
+  border-radius: 15px;
+  padding: 15px;
+ }
+
+ .field {
+  padding: 10px;
+ }
+
+ .shortPublication {
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 1.2em;
+  white-space: nowrap;
+ }
